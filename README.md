@@ -27,8 +27,8 @@ https://github.com/Tomas-Ardiles-Colacci
 Laura Patricia Cruz
 https://github.com/LauraPatriciaCruz
 
-Sergio Alejandro Astrada
-https://github.com/sergiusargentum
+Fabiola Jeanette Benitez Armoa
+https://github.com/JeaneBeAr
 
 Marisol Grade
 https://github.com/margrade
