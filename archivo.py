@@ -30,6 +30,22 @@ class Normativa:
             print("Descripción:", result[1])
         else:
             print("Normativa no encontrada.")
+#--------------Select normativa por palabra clave----------------------------
+    def select_normativa_by_palabra_clave(self, palabra_clave):
+        query = "SELECT num_normatica, nombre, descripcion, fecha, organo_legislativo FROM normativa WHERE palabra_clave = %s"
+        values = (palabra_clave,)
+        self.cursor.execute(query, values)
+        result = self.cursor.fetchone()
+        if result:
+            print("Número de Normativa:", result[0])
+            print("Nombre:", result[1])
+            print("Descripción:")
+            print(result[2])
+            print("fecha:", result[3])
+            print("organo_legislativo:", result[4])
+        else:
+            print("Normativa no encontrada.")
+#------------------------------------------------------------------------
 
     def update_normativa_nombre(self, num_normativa, nuevo_nombre):
         query = "UPDATE normativa SET nombre = %s WHERE num_normativa = %s"
