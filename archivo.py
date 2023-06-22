@@ -74,8 +74,8 @@ class Programa:
         while True:
             print("-------- Menú de Opciones --------")
             print("1. Insertar Normativa")
-            print("2. Consultar Normativa")
-            print("3. Consultar por palabra clave")
+            print("2. Consultar Normativa por numero")
+            print("3. Consultar Normativa por palabra clave")
             print("4. Actualizar Nombre de Normativa")
             print("5. Eliminar Normativa")
             print("6. Salir")
