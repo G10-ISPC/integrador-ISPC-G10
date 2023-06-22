@@ -75,7 +75,7 @@ class Programa:
         while True:
             print("-------- Menú de Opciones --------")
             print("1. Insertar Normativa")
-            print("2. Consultar Normativa por Número")
+            print("2. Consultar Normativa")
             print("3. Actualizar Nombre de Normativa")
             print("4. Eliminar Normativa")
             print("5. Salir")
@@ -92,10 +92,11 @@ class Programa:
                 id_tipo_normativa = int(input("Ingrese el ID del tipo de normativa: "))
                 id_categoria = int(input("Ingrese el ID de la categoría: "))
                 self.normativa.insert_normativa(num_normativa, nombre, descripcion, fecha, organo_legislativo, palabra_clave, id_jurisdiccion, id_tipo_normativa, id_categoria)
-
+#------------------------------------------------------------------------------------------------
             elif opcion == '2':
-                num_normativa = int(input("Ingrese el número de la normativa: "))
-                self.normativa.select_normativa_by_numero(num_normativa)
+                normativa = int(input("Ingrese el número o palabra clave de la normativa: "))
+                self.normativa.select_normativa_by_numero (normativa) or self.normativa.select_normativa_by_palabra_clave(normativa)
+#-------------------------------------------------------------------------
 
             elif opcion == '3':
                 num_normativa = int(input("Ingrese el número de la normativa a actualizar: "))
