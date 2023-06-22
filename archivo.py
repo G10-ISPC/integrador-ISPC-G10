@@ -5,7 +5,7 @@ class Normativa:
         self.connection = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='',
+            password='Mysql555',
             database='bd_trabajofinal'
         )
         self.cursor = self.connection.cursor()
@@ -107,7 +107,11 @@ class Programa:
                 self.normativa.delete_normativa(num_normativa)
 
             elif opcion == '5':
-                break
+                import time
+                import sys
+                print("Gracias por utilizar nuestro servicio.")
+                time.sleep(3)
+                sys.exit()
 
             else:
                 print("Opción inválida. Por favor, seleccione una opción válida.")
