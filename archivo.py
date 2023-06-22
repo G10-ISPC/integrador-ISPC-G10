@@ -30,7 +30,7 @@ class Normativa:
             print("Descripción:", result[1])
         else:
             print("Normativa no encontrada.")
-#--------------Select normativa por palabra clave----------------------------
+            
     def select_normativa_by_palabra_clave(self, palabra_clave):
         query = "SELECT num_normatica, nombre, descripcion, fecha, organo_legislativo FROM normativa WHERE palabra_clave = %s"
         values = (palabra_clave,)
@@ -45,7 +45,6 @@ class Normativa:
             print("organo_legislativo:", result[4])
         else:
             print("Normativa no encontrada.")
-#------------------------------------------------------------------------
 
     def update_normativa_nombre(self, num_normativa, nuevo_nombre):
         query = "UPDATE normativa SET nombre = %s WHERE num_normativa = %s"
@@ -92,11 +91,10 @@ class Programa:
                 id_tipo_normativa = int(input("Ingrese el ID del tipo de normativa: "))
                 id_categoria = int(input("Ingrese el ID de la categoría: "))
                 self.normativa.insert_normativa(num_normativa, nombre, descripcion, fecha, organo_legislativo, palabra_clave, id_jurisdiccion, id_tipo_normativa, id_categoria)
-#------------------------------------------------------------------------------------------------
+
             elif opcion == '2':
                 normativa = int(input("Ingrese el número o palabra clave de la normativa: "))
                 self.normativa.select_normativa_by_numero (normativa) or self.normativa.select_normativa_by_palabra_clave(normativa)
-#-------------------------------------------------------------------------
 
             elif opcion == '3':
                 num_normativa = int(input("Ingrese el número de la normativa a actualizar: "))
