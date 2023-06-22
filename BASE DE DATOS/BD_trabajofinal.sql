@@ -3,60 +3,42 @@
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+-- Set the SQL mode
+SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema bd_trabajofinal
--- -----------------------------------------------------
+-- Create the schema
 DROP SCHEMA IF EXISTS `bd_trabajofinal`;
-
--- -----------------------------------------------------
--- Schema bd_trabajofinal
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `bd_trabajofinal` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `bd_trabajofinal`;
 
--- -----------------------------------------------------
--- Table `bd_trabajofinal`.`categoria`
--- -----------------------------------------------------
+-- Create the tables
 CREATE TABLE IF NOT EXISTS `bd_trabajofinal`.`categoria` (
   `id_categoria` INT NOT NULL,
   `nombre` VARCHAR(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
--- -----------------------------------------------------
--- Table `bd_trabajofinal`.`jurisdiccion`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bd_trabajofinal`.`jurisdiccion` (
-  `id_jurisdiccion` INT NOT NULL,
+  `id_jurisdiccion` VARCHAR(20) NOT NULL,
   `nombre` VARCHAR(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id_jurisdiccion`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
--- -----------------------------------------------------
--- Table `bd_trabajofinal`.`tipo_normativa`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bd_trabajofinal`.`tipo_normativa` (
-  `id_tipo_normativa` INT NOT NULL,
+  `id_tipo_normativa` VARCHAR(20) NOT NULL,
   `nombre` VARCHAR(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id_tipo_normativa`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
--- -----------------------------------------------------
--- Table `bd_trabajofinal`.`normativa`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bd_trabajofinal`.`normativa` (
   `num_normativa` INT NOT NULL,
   `nombre` VARCHAR(50) NULL DEFAULT NULL,
-  `descripcion` VARCHAR(100) NULL DEFAULT NULL,
+  `descripcion` VARCHAR(200) NULL DEFAULT NULL,
   `fecha` DATE NULL DEFAULT NULL,
   `organo_legislativo` VARCHAR(20) NULL DEFAULT NULL,
   `palabra_clave` VARCHAR(50) NULL DEFAULT NULL,
-  `id_jurisdiccion` INT NULL DEFAULT NULL,
-  `id_tipo_normativa` INT NULL DEFAULT NULL,
+  `id_jurisdiccion` VARCHAR(20) NULL DEFAULT NULL,
+  `id_tipo_normativa` VARCHAR(20) NULL DEFAULT NULL,
   `id_categoria` INT NULL DEFAULT NULL,
   PRIMARY KEY (`num_normativa`),
   CONSTRAINT `normativa_ibfk_1` FOREIGN KEY (`id_jurisdiccion`) REFERENCES `bd_trabajofinal`.`jurisdiccion` (`id_jurisdiccion`),
@@ -64,20 +46,25 @@ CREATE TABLE IF NOT EXISTS `bd_trabajofinal`.`normativa` (
   CONSTRAINT `normativa_ibfk_3` FOREIGN KEY (`id_categoria`) REFERENCES `bd_trabajofinal`.`categoria` (`id_categoria`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
-CREATE INDEX `id_jurisdiccion` ON `bd_trabajofinal`.`normativa` (`id_jurisdiccion` ASC);
-CREATE INDEX `id_tipo_normativa` ON `bd_trabajofinal`.`normativa` (`id_tipo_normativa` ASC);
-CREATE INDEX `id_categoria` ON `bd_trabajofinal`.`normativa` (`id_categoria` ASC);
+-- Insert data into `categoria` table
+INSERT INTO `bd_trabajofinal`.`categoria` (`id_categoria`, `nombre`) VALUES
+(1, 'Categoría 1'),
+(2, 'Categoría 2');
 
--- -----------------------------------------------------
--- Inserting Leyes
--- -----------------------------------------------------
-INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES 
-(20754, 'Ley de Contrato de Trabajo Nº 20.744', 'Descripción de la Ley de Contrato de Trabajo', '2022-01-01', 'Órgano Legislativo', 'Contrato, Trabajo', 1, 1, 1),
-(20755, 'Ley Ejemplo 1', 'Descripción de la Ley Ejemplo 1', '2022-01-01', 'Órgano Legislativo', 'Ejemplo 1', 2, 1, 2),
-(20756, 'Ley Ejemplo 2', 'Descripción de la Ley Ejemplo 2', '2022-01-01', 'Órgano Legislativo', 'Ejemplo 2', 2, 2, 2);
--- Agrega más declaraciones INSERT para leyes adicionales si es necesario
+-- Insert data into `jurisdiccion` table
+INSERT INTO `bd_trabajofinal`.`jurisdiccion` (`id_jurisdiccion`, `nombre`) VALUES
+('Nacional', 'Jurisdicción 1'),
+('Otra', 'Jurisdicción 2');
 
+-- Insert data into `tipo_normativa` table
+INSERT INTO `bd_trabajofinal`.`tipo_normativa` (`id_tipo_normativa`, `nombre`) VALUES
+('20744', 'Tipo 1'),
+('20745', 'Tipo 2');
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- Alter table to increase length of 'descripcion' column
+ALTER TABLE `bd_trabajofinal`.`normativa` MODIFY COLUMN `descripcion` VARCHAR(500) NULL DEFAULT NULL;
+ALTER TABLE `bd_trabajofinal`.`normativa` MODIFY COLUMN `organo_legislativo` VARCHAR(300) NULL DEFAULT NULL;
+
+-- Insert data into `normativa` table
+INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
+(20754, 'Ley de Contrato de Trabajo Nº 20.744', 'Es la norma legal que regula las relaciones laborales de los trabajadores que se encuentran bajo relación de dependencia. Determina derechos y obligaciones, establece condiciones de trabajo, entre otros aspectos.', '1974-09-05', 'Congreso de la Nación', 'trabajador', 'Nacional', '20744', 1);
