@@ -73,10 +73,10 @@ class Programa:
 
     def ejecutar(self):
         while True:
-            print("-------- Menú de Opciones --------")
-            print("1. Insertar Normativa")
-            print("2. Consultar Normativa por Número")
-            print("3. Actualizar Nombre de Normativa")
+            print("-------- Menú de Opciones --------" '\n \n' )
+            print("1. Insertar Normativa"'\n \n' )
+            print("2. Consultar Normativa por Número"'\n \n' )
+            print("3. Actualizar Nombre de Normativa"'\n \n' )
             print("4. Eliminar Normativa")
             print("5. Salir")
             opcion = input("Seleccione una opción: ")
