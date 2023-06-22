@@ -93,8 +93,8 @@ class Programa:
             elif opcion == '5':
                 import time
                 import sys
-                print("Muchas gracias por utilizar nuestro servicio.")
-                time.sleep(2)
+                print("Gracias por utilizar nuestro servicio.")
+                time.sleep(3)
                 sys.exit()
 
             else:
