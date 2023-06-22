@@ -75,9 +75,11 @@ class Programa:
             print("-------- Menú de Opciones --------")
             print("1. Insertar Normativa")
             print("2. Consultar Normativa")
-            print("3. Actualizar Nombre de Normativa")
-            print("4. Eliminar Normativa")
-            print("5. Salir")
+            print("3. Consultar por palabra clave")
+            print("4. Actualizar Nombre de Normativa")
+            print("5. Eliminar Normativa")
+            print("6. Salir")
+
             opcion = input("Seleccione una opción: ")
 
             if opcion == '1':
@@ -93,19 +95,28 @@ class Programa:
                 self.normativa.insert_normativa(num_normativa, nombre, descripcion, fecha, organo_legislativo, palabra_clave, id_jurisdiccion, id_tipo_normativa, id_categoria)
 
             elif opcion == '2':
+
+                normativa = int(input("Ingrese el número de la normativa: "))
+                self.normativa.select_normativa_by_numero(normativa)
+
                 normativa = int(input("Ingrese el número o palabra clave de la normativa: "))
                 self.normativa.select_normativa_by_numero (normativa) or self.normativa.select_normativa_by_palabra_clave(normativa)
 
+
             elif opcion == '3':
+                palabra_clave = input("Ingrese palabra clave de la normativa: ")
+                self.normativa.select_normativa_by_palabra_clave(palabra_clave)
+
+            elif opcion == '4':
                 num_normativa = int(input("Ingrese el número de la normativa a actualizar: "))
                 nuevo_nombre = input("Ingrese el nuevo nombre de la normativa: ")
                 self.normativa.update_normativa_nombre(num_normativa, nuevo_nombre)
 
-            elif opcion == '4':
+            elif opcion == '5':
                 num_normativa = int(input("Ingrese el número de la normativa a eliminar: "))
                 self.normativa.delete_normativa(num_normativa)
 
-            elif opcion == '5':
+            elif opcion == '6':
                 import time
                 import sys
                 print("Gracias por utilizar nuestro servicio.")
@@ -118,4 +129,5 @@ class Programa:
 if __name__ == "__main__":
     programa = Programa()
     programa.ejecutar()
+
 
