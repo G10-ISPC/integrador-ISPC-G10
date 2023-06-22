@@ -30,6 +30,21 @@ class Normativa:
             print("Descripción:", result[1])
         else:
             print("Normativa no encontrada.")
+            
+    def select_normativa_by_palabra_clave(self, palabra_clave):
+        query = "SELECT num_normativa, nombre, descripcion, fecha, organo_legislativo FROM normativa WHERE palabra_clave = %s"
+        values = (palabra_clave,)
+        self.cursor.execute(query, values)
+        result = self.cursor.fetchone()
+        if result:
+            print("Número de Normativa:", result[0])
+            print("Nombre:", result[1])
+            print("Descripción:")
+            print(result[2])
+            print("Fecha:", result[3])
+            print("Órgano Legislativo:", result[4])
+        else:
+            print("Normativa no encontrada.")
 
     def update_normativa_nombre(self, num_normativa, nuevo_nombre):
         query = "UPDATE normativa SET nombre = %s WHERE num_normativa = %s"
@@ -59,10 +74,11 @@ class Programa:
         while True:
             print("-------- Menú de Opciones --------")
             print("1. Insertar Normativa")
-            print("2. Consultar Normativa por Número")
-            print("3. Actualizar Nombre de Normativa")
-            print("4. Eliminar Normativa")
-            print("5. Salir")
+            print("2. Consultar Normativa")
+            print("3. Consultar por palabra clave")
+            print("4. Actualizar Nombre de Normativa")
+            print("5. Eliminar Normativa")
+            print("6. Salir")
             opcion = input("Seleccione una opción: ")
 
             if opcion == '1':
@@ -78,20 +94,28 @@ class Programa:
                 self.normativa.insert_normativa(num_normativa, nombre, descripcion, fecha, organo_legislativo, palabra_clave, id_jurisdiccion, id_tipo_normativa, id_categoria)
 
             elif opcion == '2':
-                num_normativa = int(input("Ingrese el número de la normativa: "))
-                self.normativa.select_normativa_by_numero(num_normativa)
+                normativa = int(input("Ingrese el número de la normativa: "))
+                self.normativa.select_normativa_by_numero(normativa)
 
             elif opcion == '3':
+                palabra_clave = input("Ingrese palabra clave de la normativa: ")
+                self.normativa.select_normativa_by_palabra_clave(palabra_clave)
+
+            elif opcion == '4':
                 num_normativa = int(input("Ingrese el número de la normativa a actualizar: "))
                 nuevo_nombre = input("Ingrese el nuevo nombre de la normativa: ")
                 self.normativa.update_normativa_nombre(num_normativa, nuevo_nombre)
 
-            elif opcion == '4':
+            elif opcion == '5':
                 num_normativa = int(input("Ingrese el número de la normativa a eliminar: "))
                 self.normativa.delete_normativa(num_normativa)
 
-            elif opcion == '5':
-                break
+            elif opcion == '6':
+                import time
+                import sys
+                print("Gracias por utilizar nuestro servicio.")
+                time.sleep(3)
+                sys.exit()
 
             else:
                 print("Opción inválida. Por favor, seleccione una opción válida.")
@@ -99,4 +123,5 @@ class Programa:
 if __name__ == "__main__":
     programa = Programa()
     programa.ejecutar()
+
 
