@@ -81,3 +81,5 @@ INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripci
 INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
 (25326, 'Ley de Proteccion de Datos', 'Contiene principios generales de protección de Datos, derechos, obligaciones de responsables y usuarios de Datos', '2000-10-04', 'Congreso de la Nación', 'datos', '1', '1', '2');
 
+INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
+(26653, 'Ley de Accesibilidad web de Argentina', 'La ley establece que el Estado nacional, los entes públicos no estatales, las empresas del Estado y las empresas privadas concesionarias de servicios públicos, deberán respetar en los diseños de sus páginas Web las normas y requisitos sobre accesibilidad de la información que faciliten el acceso a sus contenidos, a todas las personas con discapacidad.', '2010-11-03', 'Congreso de la Nación', 'web', '1', '1', '2');

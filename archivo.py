@@ -3,9 +3,9 @@ import mysql.connector
 class Normativa:
     def __init__(self):
         self.connection = mysql.connector.connect(
-            host='localhost',
+            host='SANTI',
             user='root',
-            password='123456',
+            password='Mysql555',
             database='bd_trabajofinal'
         )
         self.cursor = self.connection.cursor()
