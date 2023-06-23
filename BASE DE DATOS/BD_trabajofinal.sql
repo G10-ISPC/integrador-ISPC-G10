@@ -49,7 +49,8 @@ CREATE TABLE IF NOT EXISTS `bd_trabajofinal`.`normativa` (
 -- Insert data into `categoria` table
 INSERT INTO `bd_trabajofinal`.`categoria` (`id_categoria`, `nombre`) VALUES
 (1, 'Laboral'),
-(2, 'Civil');
+(2, 'Civil'),
+(3, 'penal');
 
 
 -- Insert data into `jurisdiccion` table
@@ -83,3 +84,6 @@ INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripci
 
 INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
 (26653, 'Ley de Accesibilidad web de Argentina', 'La ley establece que el Estado nacional, los entes públicos no estatales, las empresas del Estado y las empresas privadas concesionarias de servicios públicos, deberán respetar en los diseños de sus páginas Web las normas y requisitos sobre accesibilidad de la información que faciliten el acceso a sus contenidos, a todas las personas con discapacidad.', '2010-11-03', 'Congreso de la Nación', 'web', '1', '1', '2');
+
+INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
+(26388, 'Ley de delito informático', 'Establece medidas para penar y combatir la cibercriminalidad', '2008-06-04', 'Congreso de la Nación', 'delito', '1', '1', '3');
