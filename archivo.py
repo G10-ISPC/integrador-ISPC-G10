@@ -21,13 +21,16 @@ class Normativa:
         print("Normativa insertada exitosamente.")
 
     def select_normativa_by_numero(self, num_normativa):
-        query = "SELECT nombre, descripcion FROM normativa WHERE num_normativa = %s"
+        query = "SELECT nombre, descripcion, fecha, organo_legislativo FROM normativa WHERE num_normativa = %s"
         values = (num_normativa,)
         self.cursor.execute(query, values)
         result = self.cursor.fetchone()
         if result:
             print("Nombre:", result[0])
-            print("Descripción:", result[1])
+            print("Descripción:") 
+            print(result[1])
+            print("Fecha:", result[2])
+            print("Organo lesgilativo:", result[3])
         else:
             print("Normativa no encontrada.")
 #--------------Select normativa por palabra clave----------------------------
