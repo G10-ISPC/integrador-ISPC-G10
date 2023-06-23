@@ -5,7 +5,7 @@ class Normativa:
         self.connection = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='',
+            password='123456',
             database='bd_trabajofinal'
         )
         self.cursor = self.connection.cursor()

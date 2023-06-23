@@ -68,3 +68,4 @@ ALTER TABLE `bd_trabajofinal`.`normativa` MODIFY COLUMN `organo_legislativo` VAR
 -- Insert data into `normativa` table
 INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
 (20754, 'Ley de Contrato de Trabajo Nº 20.744', 'Es la norma legal que regula las relaciones laborales de los trabajadores que se encuentran bajo relación de dependencia. Determina derechos y obligaciones, establece condiciones de trabajo, entre otros aspectos.', '1974-09-05', 'Congreso de la Nación', 'trabajador', 'Nacional', '20744', 1);
+(27555, 'Ley de Teletrabajo', 'Regula los derechos y obligaciones de las partes cuando la relación laboral se desarrolla a distancia. Los derechos y obligaciones son las mismas que las personas que trabajan bajo la modalidad presencial.', '2000-07-30', 'Congreso de la Nación', 'teletrabajo', 1, 1 , 1);
