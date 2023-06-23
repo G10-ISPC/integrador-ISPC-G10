@@ -48,18 +48,20 @@ CREATE TABLE IF NOT EXISTS `bd_trabajofinal`.`normativa` (
 
 -- Insert data into `categoria` table
 INSERT INTO `bd_trabajofinal`.`categoria` (`id_categoria`, `nombre`) VALUES
-(1, 'Categoría 1'),
-(2, 'Categoría 2');
+(1, 'Laboral'),
+(2, 'Civil');
+
 
 -- Insert data into `jurisdiccion` table
 INSERT INTO `bd_trabajofinal`.`jurisdiccion` (`id_jurisdiccion`, `nombre`) VALUES
-('Nacional', 'Jurisdicción 1'),
-('Otra', 'Jurisdicción 2');
+('1', 'Nacional'),
+('2', 'Provincial');
 
 -- Insert data into `tipo_normativa` table
 INSERT INTO `bd_trabajofinal`.`tipo_normativa` (`id_tipo_normativa`, `nombre`) VALUES
-('20744', 'Tipo 1'),
-('20745', 'Tipo 2');
+('1', 'Ley'),
+('2', 'Decreto');
+
 
 -- Alter table to increase length of 'descripcion' column
 ALTER TABLE `bd_trabajofinal`.`normativa` MODIFY COLUMN `descripcion` VARCHAR(500) NULL DEFAULT NULL;
@@ -67,5 +69,15 @@ ALTER TABLE `bd_trabajofinal`.`normativa` MODIFY COLUMN `organo_legislativo` VAR
 
 -- Insert data into `normativa` table
 INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
-(20754, 'Ley de Contrato de Trabajo Nº 20.744', 'Es la norma legal que regula las relaciones laborales de los trabajadores que se encuentran bajo relación de dependencia. Determina derechos y obligaciones, establece condiciones de trabajo, entre otros aspectos.', '1974-09-05', 'Congreso de la Nación', 'trabajador', 'Nacional', '20744', 1);
-(27555, 'Ley de Teletrabajo', 'Regula los derechos y obligaciones de las partes cuando la relación laboral se desarrolla a distancia. Los derechos y obligaciones son las mismas que las personas que trabajan bajo la modalidad presencial.', '2000-07-30', 'Congreso de la Nación', 'teletrabajo', 1, 1 , 1);
+(20744, 'Ley de Contrato de Trabajo Nº 20.744', 'Es la norma legal que regula las relaciones laborales de los trabajadores que se encuentran bajo relación de dependencia. Determina derechos y obligaciones, establece condiciones de trabajo, entre otros aspectos.', '1974-09-05', 'Congreso de la Nación', 'trabajador', '1', '1', 1);
+
+
+INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
+(27555, 'Ley de Teletrabajo', 'Regula los derechos y obligaciones de las partes cuando la relación laboral se desarrolla a distancia. Los derechos y obligaciones son las mismas que las personas que trabajan bajo la modalidad presencial.', '2020-07-30', 'Congreso de la Nación', 'teletrabajo', '1', '1', 1);
+
+INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
+(7642, 'Ley de Ejercicio Profesional de la Informatica', 'Establece entre los profesionales de Ciencias Informáticas una comunidad de intereses e ideales éticos, normativos y profesionales.Cómo debe ser y a qué se considera ejercicio profesional.', '2000-10-04', 'Legislatura de Córdoba', 'informaticos', '2', '1', 1);
+
+INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
+(25326, 'Ley de Proteccion de Datos', 'Contiene principios generales de protección de Datos, derechos, obligaciones de responsables y usuarios de Datos', '2000-10-04', 'Congreso de la Nación', 'datos', '1', '1', '2');
+
