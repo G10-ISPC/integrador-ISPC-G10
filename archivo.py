@@ -1,7 +1,7 @@
 import mysql.connector
 
 class Normativa:
-    def __init__(self):
+    def _init_(self):
         self.connection = mysql.connector.connect(
             host='localhost',
             user='root',
@@ -10,7 +10,7 @@ class Normativa:
         )
         self.cursor = self.connection.cursor()
 
-    def __del__(self):
+    def _del_(self):
         self.connection.close()
 
     def insert_normativa(self, num_normativa, nombre, descripcion, fecha, organo_legislativo, palabra_clave, id_jurisdiccion, id_tipo_normativa, id_categoria):
@@ -71,7 +71,7 @@ class Normativa:
             print("Normativa no encontrada.")
 
 class Programa:
-    def __init__(self):
+    def _init_(self):
         self.normativa = Normativa()
 
     def ejecutar(self):
@@ -80,8 +80,9 @@ class Programa:
             print("1. Insertar Normativa"'\n \n' )
             print("2. Consultar Normativa por Número"'\n \n' )
             print("3. Actualizar Nombre de Normativa"'\n \n' )
-            print("4. Eliminar Normativa")
-            print("5. Salir")
+            print("4. Eliminar Normativa"'\n \n' )
+            print("5. Salir"'\n \n' )
+
             opcion = input("Seleccione una opción: ")
 
             if opcion == '1':
@@ -119,7 +120,7 @@ class Programa:
             else:
                 print("Opción inválida. Por favor, seleccione una opción válida.")
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     programa = Programa()
     programa.ejecutar()
 
