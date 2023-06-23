@@ -80,8 +80,9 @@ class Programa:
             print("1. Insertar Normativa"'\n \n' )
             print("2. Consultar Normativa por Número"'\n \n' )
             print("3. Actualizar Nombre de Normativa"'\n \n' )
-            print("4. Eliminar Normativa")
-            print("5. Salir")
+            print("4. Eliminar Normativa" '\n \n' )
+            print("5. Salir" '\n \n' )
+
             opcion = input("Seleccione una opción: ")
 
             if opcion == '1':
@@ -122,4 +123,3 @@ class Programa:
 if __name__ == "__main__":
     programa = Programa()
     programa.ejecutar()
-
