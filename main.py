@@ -1,16 +1,16 @@
 import mysql.connector
 
 class Normativa:
-    def _init_(self):
+    def __init__(self):
         self.connection = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='12345678',
+            password='',
             database='bd_trabajofinal'
         )
         self.cursor = self.connection.cursor()
 
-    def _del_(self):
+    def __del__(self):
         self.connection.close()
 
     def insert_normativa(self, num_normativa, nombre, descripcion, fecha, organo_legislativo, palabra_clave, id_jurisdiccion, id_tipo_normativa, id_categoria):
@@ -21,7 +21,7 @@ class Normativa:
         print("Normativa insertada exitosamente.")
 
     def select_normativa_by_numero(self, num_normativa):
-        query = "SELECT nombre, descripcion, fecha, organo_legislativo FROM normativa WHERE num_normativa = %s"
+        query = "SELECT nombre, descripcion FROM normativa WHERE num_normativa = %s"
         values = (num_normativa,)
         self.cursor.execute(query, values)
         result = self.cursor.fetchone()
@@ -30,28 +30,9 @@ class Normativa:
             print("Nombre:", result[0])
             print("Descripción:", result[1])
             print ("\n")
-            print("Fecha:", result[2])
-            print("Organo lesgilativo:", result[3])
-
         else:
             print("\n")
             print("Normativa no encontrada.")
-#--------------Select normativa por palabra clave----------------------------
-    def select_normativa_by_palabra_clave(self, palabra_clave):
-        query = "SELECT num_normatica, nombre, descripcion, fecha, organo_legislativo FROM normativa WHERE palabra_clave = %s"
-        values = (palabra_clave,)
-        self.cursor.execute(query, values)
-        result = self.cursor.fetchone()
-        if result:
-            print("Número de Normativa:", result[0])
-            print("Nombre:", result[1])
-            print("Descripción:")
-            print(result[2])
-            print("fecha:", result[3])
-            print("organo_legislativo:", result[4])
-        else:
-            print("Normativa no encontrada.")
-#------------------------------------------------------------------------
 
     def update_normativa_nombre(self, num_normativa, nuevo_nombre):
         query = "UPDATE normativa SET nombre = %s WHERE num_normativa = %s"
@@ -78,22 +59,19 @@ class Normativa:
             print("Normativa no encontrada.")
 
 class Programa:
-    def _init_(self):
+    def __init__(self):
         self.normativa = Normativa()
 
     def ejecutar(self):
         while True:
-
             print ("\n")
-            print("-------- Menú de Opciones --------" '\n \n' )
-            print("1. Insertar Normativa"'\n \n' )
-            print("2. Consultar Normativa por Número"'\n \n' )
-            print("3. Actualizar Nombre de Normativa"'\n \n' )
-            print("4. Eliminar Normativa"'\n \n' )
-            print("5. Salir"'\n \n' )
-
-            opcion = input("Seleccione una opción: ")
-
+            print("-------- Menú de Opciones --------")
+            print("1. Insertar Normativa")
+            print("2. Consultar Normativa por Número")
+            print("3. Actualizar Nombre de Normativa")
+            print("4. Eliminar Normativa")
+            print("5. Salir")
+            opcion = input("Seleccione una opcion: ")
 
             if opcion == '1':
                 num_normativa = int(input("Ingrese el número de la normativa: "))
@@ -126,8 +104,7 @@ class Programa:
             else:
                 print("\n")
                 print("Opción inválida. Por favor, seleccione una opción válida.")
-
-if _name_ == "_main_":
+                print("\n")
+if __name__ == "__main__":
     programa = Programa()
     programa.ejecutar()
-
