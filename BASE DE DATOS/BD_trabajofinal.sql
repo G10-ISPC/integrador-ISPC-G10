@@ -87,3 +87,4 @@ INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripci
 
 INSERT INTO `bd_trabajofinal`.`normativa` (`num_normativa`, `nombre`, `descripcion`, `fecha`, `organo_legislativo`, `palabra_clave`, `id_jurisdiccion`, `id_tipo_normativa`, `id_categoria`) VALUES
 (26388, 'Ley de delito informático', 'Establece medidas para penar y combatir la cibercriminalidad', '2008-06-04', 'Congreso de la Nación', 'delito', '1', '1', '3');
+UPDATE bd_trabajofinal.normativa SET descripcion = 'Esta ley establece medidas para penar y combatir la cibercriminalidad' WHERE descripcion = 'Establece medidas para penar y combatir la cibercriminalidad';
