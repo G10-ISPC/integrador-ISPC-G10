@@ -5,7 +5,7 @@ class Normativa:
         self.connection = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='Mysql555',
+            password='12345678',
             database='bd_trabajofinal'
         )
         self.cursor = self.connection.cursor()
@@ -26,12 +26,15 @@ class Normativa:
         self.cursor.execute(query, values)
         result = self.cursor.fetchone()
         if result:
+            print("\n")
             print("Nombre:", result[0])
-            print("Descripción:") 
-            print(result[1])
+            print("Descripción:", result[1])
+            print ("\n")
             print("Fecha:", result[2])
             print("Organo lesgilativo:", result[3])
+
         else:
+            print("\n")
             print("Normativa no encontrada.")
 #--------------Select normativa por palabra clave----------------------------
     def select_normativa_by_palabra_clave(self, palabra_clave):
@@ -56,8 +59,10 @@ class Normativa:
         self.cursor.execute(query, values)
         self.connection.commit()
         if self.cursor.rowcount > 0:
+            print ("\n")
             print("Normativa actualizada exitosamente.")
         else:
+            print ("\n")
             print("Normativa no encontrada.")
 
     def delete_normativa(self, num_normativa):
@@ -66,8 +71,10 @@ class Normativa:
         self.cursor.execute(query, values)
         self.connection.commit()
         if self.cursor.rowcount > 0:
+            print("\n")
             print("Normativa eliminada exitosamente.")
         else:
+            print ("\n")
             print("Normativa no encontrada.")
 
 class Programa:
@@ -76,6 +83,8 @@ class Programa:
 
     def ejecutar(self):
         while True:
+
+            print ("\n")
             print("-------- Menú de Opciones --------" '\n \n' )
             print("1. Insertar Normativa"'\n \n' )
             print("2. Consultar Normativa por Número"'\n \n' )
@@ -84,6 +93,7 @@ class Programa:
             print("5. Salir"'\n \n' )
 
             opcion = input("Seleccione una opción: ")
+
 
             if opcion == '1':
                 num_normativa = int(input("Ingrese el número de la normativa: "))
@@ -111,13 +121,10 @@ class Programa:
                 self.normativa.delete_normativa(num_normativa)
 
             elif opcion == '5':
-                import time
-                import sys
-                print("Muchas gracias por utilizar nuestro servicio.")
-                time.sleep(3)
-                sys.exit()
+                break
 
             else:
+                print("\n")
                 print("Opción inválida. Por favor, seleccione una opción válida.")
 
 if _name_ == "_main_":
